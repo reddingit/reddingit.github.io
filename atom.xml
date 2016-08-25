@@ -4,7 +4,7 @@
   <subtitle><![CDATA[For a lifetime]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://5minsred.com/"/>
-  <updated>2016-08-25T14:44:47.000Z</updated>
+  <updated>2016-08-25T14:52:05.000Z</updated>
   <id>http://5minsred.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://5minsred.com/2016/08/24/React-Native%E4%B9%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0/"/>
     <id>http://5minsred.com/2016/08/24/React-Native之自定义下拉刷新/</id>
     <published>2016-08-24T13:51:25.000Z</published>
-    <updated>2016-08-25T14:44:47.000Z</updated>
+    <updated>2016-08-25T14:52:05.000Z</updated>
     <content type="html"><![CDATA[<p>React Native自身提供了基于UIRefreshControl的下拉刷新组件，难以个性化定制；开源社区中也有一些基于JS的解决方案，然而在用户体验上远逊于Native。如何在保证用户体验的前提下，为React Native定制个性化的下拉刷新就需要好好动动脑筋了。</p>
 <p>社区现在有许多易用的下拉刷新组件，如<a href="https://github.com/CoderMJLee/MJRefresh" target="_blank" rel="external">https://github.com/CoderMJLee/MJRefresh</a>，那么我们能否在React Native中使用这些组件呢？仔细研究过RCTScrollView的代码后，经过一番试验，这是可行的。</p>
 <p><strong><em>以下所有代码改动均基于React Native 0.30.0版本</em></strong></p>
@@ -43,6 +43,9 @@
 <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">startPullToRefresh: <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  RCTScrollViewManager.startPullToRefresh(</span><br><span class="line">      ReactNative.findNodeHandle(<span class="keyword">this</span>)</span><br><span class="line">  );</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">stopPullToRefresh: <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  RCTScrollViewManager.stopPullToRefresh(</span><br><span class="line">      ReactNative.findNodeHandle(<span class="keyword">this</span>)</span><br><span class="line">  );</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 <p>7.大功告成，接下来只需要在JS端调用即可，代码如下：</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;ListView</span><br><span class="line">    dataSource=&#123;<span class="keyword">this</span>.dataSource.cloneWithRowsAndSections(<span class="keyword">this</span>.props.dataSource)&#125;</span><br><span class="line">    renderRow=&#123;<span class="keyword">this</span>._renderRow&#125;</span><br><span class="line">    renderSectionHeader=&#123;<span class="keyword">this</span>._renderSectionHeader&#125;</span><br><span class="line">    renderSeparator=&#123;<span class="keyword">this</span>._renderSeparator&#125;</span><br><span class="line">    enableEmptySections=&#123;<span class="keyword">true</span>&#125;</span><br><span class="line">    enablePullToRefresh=&#123;<span class="keyword">true</span>&#125;</span><br><span class="line">    isOnPullToRefresh=&#123;<span class="keyword">this</span>.props.isRefreshing&#125;</span><br><span class="line">    onRefreshData=&#123;() =&gt; &#123;</span><br><span class="line">        <span class="comment">// 刷新数据逻辑</span></span><br><span class="line">        <span class="keyword">this</span>.props.onRefresh &amp;&amp; <span class="keyword">this</span>.props.onRefresh();</span><br><span class="line">    &#125;&#125;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
+<p>8.总结</p>
+<p>经过上面的这些代码新增和修改，我们已经为React Native添加了完全自定义pull to refresh的功能，React Native的下拉刷新也可以绚丽多彩，如丝般顺滑了，cheers！</p>
+<p>有得必有失，需要考量的是，这种对于React Native代码的深度定制不利于后续React Native的版本升级，每次升级版本的时候都要同步修改，同时比对一下React Native原文件的变动是否会影响我们的定制，一切都是权衡、折衷、妥协！</p>
 <p><strong><em>请勿转载</em></strong></p>
 ]]></content>
     <summary type="html">
