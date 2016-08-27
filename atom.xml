@@ -3,9 +3,9 @@
   <title><![CDATA[5 minutes walk]]></title>
   <subtitle><![CDATA[Sometimes in life you feel the fight is over...]]></subtitle>
   <link href="/atom.xml" rel="self"/>
-  <link href="http://5minsred.com/"/>
+  <link href="http://5minuteswalk.com/"/>
   <updated>2016-08-27T04:37:53.000Z</updated>
-  <id>http://5minsred.com/</id>
+  <id>http://5minuteswalk.com/</id>
   
   <author>
     <name><![CDATA[Redding Yu]]></name>
@@ -16,8 +16,8 @@
   
   <entry>
     <title><![CDATA[什么是优秀的程序员]]></title>
-    <link href="http://5minsred.com/2016/08/26/%E4%BB%80%E4%B9%88%E6%98%AF%E4%BC%98%E7%A7%80%E7%9A%84%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
-    <id>http://5minsred.com/2016/08/26/什么是优秀的程序员/</id>
+    <link href="http://5minuteswalk.com/2016/08/26/%E4%BB%80%E4%B9%88%E6%98%AF%E4%BC%98%E7%A7%80%E7%9A%84%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+    <id>http://5minuteswalk.com/2016/08/26/什么是优秀的程序员/</id>
     <published>2016-08-26T14:57:00.000Z</published>
     <updated>2016-08-27T04:37:53.000Z</updated>
     <content type="html"><![CDATA[<p>最近看到有人在讨论什么才是优秀的程序员，正巧也在想这方面的事情，就把看到的和想到的一块整理记录下来，免得以后忘了，毕竟思想的火花是很珍贵的，哈哈。</p>
@@ -32,16 +32,16 @@
 <h3 id="u4F18_u79C0_u7684_u7A0B_u5E8F_u5458_u80FD_u591F_u77]]>
     </summary>
     
-      <category term="杂谈" scheme="http://5minsred.com/tags/%E6%9D%82%E8%B0%88/"/>
+      <category term="杂谈" scheme="http://5minuteswalk.com/tags/%E6%9D%82%E8%B0%88/"/>
     
-      <category term="杂谈" scheme="http://5minsred.com/categories/%E6%9D%82%E8%B0%88/"/>
+      <category term="杂谈" scheme="http://5minuteswalk.com/categories/%E6%9D%82%E8%B0%88/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[React-Native之自定义下拉刷新]]></title>
-    <link href="http://5minsred.com/2016/08/24/React-Native%E4%B9%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0/"/>
-    <id>http://5minsred.com/2016/08/24/React-Native之自定义下拉刷新/</id>
+    <link href="http://5minuteswalk.com/2016/08/24/React-Native%E4%B9%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0/"/>
+    <id>http://5minuteswalk.com/2016/08/24/React-Native之自定义下拉刷新/</id>
     <published>2016-08-24T13:51:25.000Z</published>
     <updated>2016-08-25T14:52:05.000Z</updated>
     <content type="html"><![CDATA[<p>React Native自身提供了基于UIRefreshControl的下拉刷新组件，难以个性化定制；开源社区中也有一些基于JS的解决方案，然而在用户体验上远逊于Native。如何在保证用户体验的前提下，为React Native定制个性化的下拉刷新就需要好好动动脑筋了。</p>
@@ -76,18 +76,18 @@
     <![CDATA[<p>React Native自身提供了基于UIRefreshControl的下拉刷新组件，难以个性化定制；开源社区中也有一些基于JS的解决方案，然而在用户体验上远逊于Native。如何在保证用户体验的前提下，为React Native定制个性化的下拉刷新就需要好好动动脑筋了。<]]>
     </summary>
     
-      <category term="React Native" scheme="http://5minsred.com/tags/React-Native/"/>
+      <category term="React Native" scheme="http://5minuteswalk.com/tags/React-Native/"/>
     
-      <category term="iOS" scheme="http://5minsred.com/tags/iOS/"/>
+      <category term="iOS" scheme="http://5minuteswalk.com/tags/iOS/"/>
     
-      <category term="React Native" scheme="http://5minsred.com/categories/React-Native/"/>
+      <category term="React Native" scheme="http://5minuteswalk.com/categories/React-Native/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[React-Native之复用原生UI组件]]></title>
-    <link href="http://5minsred.com/2016/01/18/React-Native%E4%B9%8B%E5%A4%8D%E7%94%A8%E5%8E%9F%E7%94%9FUI%E7%BB%84%E4%BB%B6/"/>
-    <id>http://5minsred.com/2016/01/18/React-Native之复用原生UI组件/</id>
+    <link href="http://5minuteswalk.com/2016/01/18/React-Native%E4%B9%8B%E5%A4%8D%E7%94%A8%E5%8E%9F%E7%94%9FUI%E7%BB%84%E4%BB%B6/"/>
+    <id>http://5minuteswalk.com/2016/01/18/React-Native之复用原生UI组件/</id>
     <published>2016-01-18T14:38:00.000Z</published>
     <updated>2016-03-20T14:43:20.000Z</updated>
     <content type="html"><![CDATA[<p>原文：<a href="http://moduscreate.com/leverage-existing-ios-views-react-native-app/" target="_blank" rel="external">Leverage Existing iOS Views In Your React Native App</a></p>
@@ -124,18 +124,18 @@
     
     </summary>
     
-      <category term="React Native" scheme="http://5minsred.com/tags/React-Native/"/>
+      <category term="React Native" scheme="http://5minuteswalk.com/tags/React-Native/"/>
     
-      <category term="iOS" scheme="http://5minsred.com/tags/iOS/"/>
+      <category term="iOS" scheme="http://5minuteswalk.com/tags/iOS/"/>
     
-      <category term="React Native" scheme="http://5minsred.com/categories/React-Native/"/>
+      <category term="React Native" scheme="http://5minuteswalk.com/categories/React-Native/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[React-Native之Bridge]]></title>
-    <link href="http://5minsred.com/2016/01/16/React-Native%E4%B9%8BBridge/"/>
-    <id>http://5minsred.com/2016/01/16/React-Native之Bridge/</id>
+    <link href="http://5minuteswalk.com/2016/01/16/React-Native%E4%B9%8BBridge/"/>
+    <id>http://5minuteswalk.com/2016/01/16/React-Native之Bridge/</id>
     <published>2016-01-15T16:02:00.000Z</published>
     <updated>2016-03-20T14:43:29.000Z</updated>
     <content type="html"><![CDATA[<p>原文：<a href="http://tadeuzagallo.com/blog/react-native-bridge/" target="_blank" rel="external">BRIDGING IN REACT NATIVE</a></p>
@@ -218,11 +218,11 @@
     
     </summary>
     
-      <category term="React Native" scheme="http://5minsred.com/tags/React-Native/"/>
+      <category term="React Native" scheme="http://5minuteswalk.com/tags/React-Native/"/>
     
-      <category term="iOS" scheme="http://5minsred.com/tags/iOS/"/>
+      <category term="iOS" scheme="http://5minuteswalk.com/tags/iOS/"/>
     
-      <category term="React Native" scheme="http://5minsred.com/categories/React-Native/"/>
+      <category term="React Native" scheme="http://5minuteswalk.com/categories/React-Native/"/>
     
   </entry>
   
