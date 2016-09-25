@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Sometimes in life you feel the fight is over...]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://5minuteswalk.com/"/>
-  <updated>2016-09-08T14:02:20.000Z</updated>
+  <updated>2016-09-11T02:19:24.000Z</updated>
   <id>http://5minuteswalk.com/</id>
   
   <author>
@@ -13,6 +13,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[树莓派3B上手小记]]></title>
+    <link href="http://5minuteswalk.com/2016/09/09/%E6%A0%91%E8%8E%93%E6%B4%BE3B%E4%B8%8A%E6%89%8B%E5%B0%8F%E8%AE%B0/"/>
+    <id>http://5minuteswalk.com/2016/09/09/树莓派3B上手小记/</id>
+    <published>2016-09-09T15:27:21.000Z</published>
+    <updated>2016-09-11T02:19:24.000Z</updated>
+    <content type="html"><![CDATA[<p>终于入手了心仪已久的树莓派3B，使用过程略有曲折。</p>
+<p>1.sudo apt-get update 源504的问题<br>开机之后，第一步当然是去把raspbian系统更新到最新，使用sudo apt-get update却遇到了504的问题，google后发现需要更新源设置：</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/apt/sources.<span class="type">list</span></span><br></pre></td></tr></table></figure>
+<p>文件内容变更为：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deb <span class="string">http:</span><span class="comment">//archive.raspbian.org/raspbian wheezy main contrib non-free</span></span><br><span class="line">deb-src <span class="string">http:</span><span class="comment">//archive.raspbian.org/raspbian wheezy main contrib non-free</span></span><br></pre></td></tr></table></figure>
+<p>然后更新apt source，执行：</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> <span class="built_in">dist</span>-upgrade</span><br></pre></td></tr></table></figure>
+<p>然后更新raspbian系统，执行：</p>
+<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> <span class="keyword">update</span></span><br></pre></td></tr></table></figure>
+<p>参考：</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">http:</span>/<span class="regexp">/raspberrypi.stackexchange.com/questions</span><span class="regexp">/10600/apt</span>-get-update-gives-me-errors-<span class="keyword">with</span>-mirrordirector-raspbian-org/</span><br><span class="line"><span class="symbol">http:</span>/<span class="regexp">/www.raspbian.org/</span><span class="constant">RaspbianRepository</span></span><br></pre></td></tr></table></figure>
+<p>2.vi编辑文件时笔记本键盘键位不对的问题</p>
+<p>我是用macbook pro ssh连接的pi，使用vi编辑文件的时候发现，笔记本和键盘的键位和平时使用的完全不一致，编辑起来很痛苦，google之后，发现需要安装vim，<br><code>sudo apt-get install vim</code><br>即可，安装过程中遇到了<br><code>vim : 依赖: vim-common (= 2:7.3.429-2ubuntu2.1) 但是 2:7.3.547-4ubuntu1 正要被安装
+E: 无法修正错误，因为您要求某些软件包保持现状，就是它们破坏了软件包间的依赖关系。</code><br>的错误，原因可能是安装vim所依赖的vim-common和系统自带的vim-common版本冲突，解决办法就是先把vim-common卸载了人然后再安装vim即可.</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> <span class="built_in">remove</span> <span class="keyword">vim</span>-common</span><br><span class="line">sudo apt-<span class="built_in">get</span> install <span class="keyword">vim</span></span><br></pre></td></tr></table></figure>
+<p>或者直接使用nano，放弃vi。。。</p>
+<p>3.pi 3自带wifi模块，wifi配置问题</p>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/wp<span class="built_in">a_supplicant</span>/wp<span class="built_in">a_supplicant</span>.conf</span><br><span class="line"></span><br><span class="line">network=&#123;   </span><br><span class="line">    ssid=“WIFI名称“</span><br><span class="line">    psk=”WIFI密码“</span><br><span class="line">    key_mgmt=WPA-PSK</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>修改完成后，使用以下命令重启网络</p>
+<p><code>sudo /etc/init.d/networking restart</code></p>
+<p>重启完成后，使用<code>ifconfig</code>查看wifi连接状态：wlan0</p>
+<p>4.pi系统设置：时区、用户密码等</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">sudo</span> raspi-config</span><br></pre></td></tr></table></figure>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>终于入手了心仪已久的树莓派3B，使用过程略有曲折。</p>
+<p>1.sudo apt-get update 源504的问题<br>开机之后，第一步当然是去把raspbian系统更新到最新，使用sudo apt-get update却遇到了504的问题，google后发现需]]>
+    </summary>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[如何解决问题]]></title>
@@ -54,108 +91,6 @@
     </summary>
     
       <category term="杂谈" scheme="http://5minuteswalk.com/tags/%E6%9D%82%E8%B0%88/"/>
-    
-      <category term="杂谈" scheme="http://5minuteswalk.com/categories/%E6%9D%82%E8%B0%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[卓有成效的管理者读书笔记八]]></title>
-    <link href="http://5minuteswalk.com/2016/09/08/%E5%8D%93%E6%9C%89%E6%88%90%E6%95%88%E7%9A%84%E7%AE%A1%E7%90%86%E8%80%85%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E5%85%AB/"/>
-    <id>http://5minuteswalk.com/2016/09/08/卓有成效的管理者读书笔记八/</id>
-    <published>2016-09-08T13:56:11.000Z</published>
-    <updated>2016-09-08T14:01:27.000Z</updated>
-    <content type="html"></content>
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="读书笔记" scheme="http://5minuteswalk.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="杂谈" scheme="http://5minuteswalk.com/categories/%E6%9D%82%E8%B0%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[卓有成效的管理者读书笔记七]]></title>
-    <link href="http://5minuteswalk.com/2016/09/08/%E5%8D%93%E6%9C%89%E6%88%90%E6%95%88%E7%9A%84%E7%AE%A1%E7%90%86%E8%80%85%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%B8%83/"/>
-    <id>http://5minuteswalk.com/2016/09/08/卓有成效的管理者读书笔记七/</id>
-    <published>2016-09-08T13:56:04.000Z</published>
-    <updated>2016-09-08T14:01:15.000Z</updated>
-    <content type="html"></content>
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="读书笔记" scheme="http://5minuteswalk.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="杂谈" scheme="http://5minuteswalk.com/categories/%E6%9D%82%E8%B0%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[卓有成效的管理者读书笔记六]]></title>
-    <link href="http://5minuteswalk.com/2016/09/08/%E5%8D%93%E6%9C%89%E6%88%90%E6%95%88%E7%9A%84%E7%AE%A1%E7%90%86%E8%80%85%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E5%85%AD/"/>
-    <id>http://5minuteswalk.com/2016/09/08/卓有成效的管理者读书笔记六/</id>
-    <published>2016-09-08T13:55:49.000Z</published>
-    <updated>2016-09-08T14:01:19.000Z</updated>
-    <content type="html"></content>
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="读书笔记" scheme="http://5minuteswalk.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="杂谈" scheme="http://5minuteswalk.com/categories/%E6%9D%82%E8%B0%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[卓有成效的管理者读书笔记五]]></title>
-    <link href="http://5minuteswalk.com/2016/09/08/%E5%8D%93%E6%9C%89%E6%88%90%E6%95%88%E7%9A%84%E7%AE%A1%E7%90%86%E8%80%85%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%BA%94/"/>
-    <id>http://5minuteswalk.com/2016/09/08/卓有成效的管理者读书笔记五/</id>
-    <published>2016-09-08T13:55:44.000Z</published>
-    <updated>2016-09-08T14:01:00.000Z</updated>
-    <content type="html"></content>
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="读书笔记" scheme="http://5minuteswalk.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="杂谈" scheme="http://5minuteswalk.com/categories/%E6%9D%82%E8%B0%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[卓有成效的管理者读书笔记四]]></title>
-    <link href="http://5minuteswalk.com/2016/09/08/%E5%8D%93%E6%9C%89%E6%88%90%E6%95%88%E7%9A%84%E7%AE%A1%E7%90%86%E8%80%85%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E5%9B%9B/"/>
-    <id>http://5minuteswalk.com/2016/09/08/卓有成效的管理者读书笔记四/</id>
-    <published>2016-09-08T13:55:39.000Z</published>
-    <updated>2016-09-08T14:01:03.000Z</updated>
-    <content type="html"></content>
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="读书笔记" scheme="http://5minuteswalk.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="杂谈" scheme="http://5minuteswalk.com/categories/%E6%9D%82%E8%B0%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[卓有成效的管理者读书笔记三]]></title>
-    <link href="http://5minuteswalk.com/2016/09/08/%E5%8D%93%E6%9C%89%E6%88%90%E6%95%88%E7%9A%84%E7%AE%A1%E7%90%86%E8%80%85%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%B8%89/"/>
-    <id>http://5minuteswalk.com/2016/09/08/卓有成效的管理者读书笔记三/</id>
-    <published>2016-09-08T13:55:34.000Z</published>
-    <updated>2016-09-08T14:01:07.000Z</updated>
-    <content type="html"></content>
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="读书笔记" scheme="http://5minuteswalk.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
       <category term="杂谈" scheme="http://5minuteswalk.com/categories/%E6%9D%82%E8%B0%88/"/>
     
